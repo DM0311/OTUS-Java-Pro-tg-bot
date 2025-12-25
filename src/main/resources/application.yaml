@@ -22,7 +22,7 @@ spring:
 
 telegram:
   bot:
-    token: 8545170897:AAECv3CeR04XK2m7sHdzcLop17-f8hTSZHY
+    token: { BOT_TOKEN }
     username: JavaProPddTestBot
 
 app:
