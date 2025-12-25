@@ -1,0 +1,37 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: pddBot
+    username: JavaProPddTestBot
+  datasource:
+    url: jdbc:postgresql://localhost:5430/demoDB
+    username: usr
+    password: pwd
+    driver-class-name: org.postgresql.Driver
+  flyway:
+    enabled: true
+    cleanDisabled: false
+    locations: classpath:db/migration
+
+#  thymeleaf:
+#    prefix: classpath:/templates/
+#    cache: false
+
+
+telegram:
+  bot:
+    token: 8545170897:AAECv3CeR04XK2m7sHdzcLop17-f8hTSZHY
+    username: JavaProPddTestBot
+
+app:
+  exam:
+    questions-per-exam: 20
+    passing-score: 18
+  training:
+    questions-per-session: 10
+
+logging:
+  level:
+    org.springframework.core.env.Environment: DEBUG
