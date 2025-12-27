@@ -14,15 +14,14 @@ spring:
     enabled: true
     cleanDisabled: false
     locations: classpath:db/migration
-
-#  thymeleaf:
-#    prefix: classpath:/templates/
-#    cache: false
+  thymeleaf:
+    prefix: classpath:/templates/
+    cache: false
 
 
 telegram:
   bot:
-    token: { BOT_TOKEN }
+    token: 8545170897:AAECv3CeR04XK2m7sHdzcLop17-f8hTSZHY
     username: JavaProPddTestBot
 
 app:

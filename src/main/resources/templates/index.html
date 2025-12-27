@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Окно администратора</title>
+</head>
+<body>
+
+<!--<h3>Сохранить нового клиента</h3>-->
+<!--<form id="myForm" class="grid-form" action="/user" method="post" accept-charset="UTF-8">-->
+
+<!--    <label for="clientName">Имя клиента:</label>-->
+<!--    <input type="text" id="clientName" name="clientName" placeholder="Введите имя пользователя">-->
+
+<!--    <label for="clientAddress">Адрес клиента:</label>-->
+<!--    <input type="text" id="clientAddress" name="clientAddress" placeholder="Введите адрес пользователя">-->
+
+<!--    <label for="clientPhone">Телефон клиента:</label>-->
+<!--    <input type="text" id="clientPhone" name="clientPhone" placeholder="Введите телефон пользователя">-->
+
+<!--    <div></div>-->
+<!--    <div class="actions">-->
+<!--        <button type="submit">Создать</button>-->
+<!--    </div>-->
+
+<!--    <pre id="userDataContainer"></pre>-->
+<!--</form>-->
+
+<h3>Список зарегистрированных пользователей</h3>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>First name</th>
+        <th>Username</th>
+        <th>Telegram ID</th>
+        <th>Общее кол-во попыток</th>
+        <th>Успешное кол-во попыток</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}">Alice</td>
+        <td th:text="${user.firstName}">Alice</td>
+        <td th:text="${user.username}">Alice</td>
+        <td th:text="${user.telegramId}">none</td>
+        <td th:text="${user.totalExams}">0</td>
+        <td th:text="${user.passedExams}">0</td>
+    </tr>
+    </tbody>
+</table>
+<h3>Список сессий тестирования</h3>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>First name</th>
+        <th>Username</th>
+        <th>Telegram ID</th>
+        <th>Статус сессии</th>
+        <th>Время начала</th>
+        <th>Время завершения</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="examSession : ${examSessions}">
+        <td th:text="${examSession.id}">Alice</td>
+        <td th:text="${examSession.user.firstName}">Alice</td>
+        <td th:text="${examSession.user.username}">Alice</td>
+        <td th:text="${examSession.user.telegramId}">Alice</td>
+        <td th:text="${examSession.status}">none</td>
+        <td th:text="${examSession.startedAt}">0</td>
+        <td th:text="${examSession.completedAt}">0</td>
+    </tr>
+    </tbody>
+</table>
+<h3>Удаление пользователей</h3>
+<form id="myForm1" class="grid-form" action="/del_user" method="post" accept-charset="UTF-8">
+
+    <label for="clientId">Имя пользователя:</label>
+    <input type="text" id="clientId" name="clientId" placeholder="Введите ID пользователя">
+    <div class="actions">
+        <button type="submit">Удалить</button>
+    </div>
+
+</form>
+<h3>Удаление некорректных сессий тестирований</h3>
+<form id="myForm2" class="grid-form" action="/del_session" method="post" accept-charset="UTF-8">
+
+    <label for="sessionId">ID сессии:</label>
+    <input type="text" id="sessionId" name="sessionId" placeholder="Введите ID некорректной сессии">
+    <div class="actions">
+        <button type="submit">Удалить</button>
+    </div>
+</form>
+</body>
+<style>
+    .grid-form {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      max-width: 400px;
+    }
+
+    .grid-form label {
+      font-weight: 500;
+    }
+
+    body { font-family: sans-serif; margin: 24px; }
+        form {
+            margin-bottom: 24px;
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 8px 12px;
+            max-width: 520px;
+        }
+        form label { align-self: center; }
+        table { border-collapse: collapse; width: 70%; }
+        th, td { border: 1px solid #ddd; padding: 8px; }
+
+</style>
+</html>
