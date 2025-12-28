@@ -103,6 +103,7 @@ public class ExamService {
 
         examSessionRepository.moveToNextQuestion(sessionId);
         userService.updateStatistics(userId, isCorrect);
+        //
         questionService.markAnswer(questionId, isCorrect);
 
         // Проверяем, завершен ли экзамен

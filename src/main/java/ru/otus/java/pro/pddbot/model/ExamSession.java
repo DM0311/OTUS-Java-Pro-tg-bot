@@ -49,10 +49,4 @@ public class ExamSession {
         return "COMPLETED".equals(status) || "TIMEOUT".equals(status);
     }
 
-    @Transient
-    public void complete(boolean passed) {
-        this.status = "COMPLETED";
-        this.completedAt = LocalDateTime.now();
-        this.passed = passed;
-    }
 }

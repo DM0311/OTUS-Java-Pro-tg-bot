@@ -6,26 +6,12 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import ru.otus.java.pro.pddbot.model.ExamSession;
 
-import java.util.List;
 import java.util.Optional;
 
 public interface ExamSessionRepository extends CrudRepository<ExamSession, Long> {
 
     @Query("SELECT * FROM exam_sessions WHERE user_id = :userId AND status = 'IN_PROGRESS' ORDER BY created_at DESC LIMIT 1")
     Optional<ExamSession> findActiveByUserId(@Param("userId") Long userId);
-
-    List<ExamSession> findByUserId(Long userId);
-
-    @Query("SELECT * FROM exam_sessions WHERE user_id = :userId ORDER BY created_at DESC")
-    List<ExamSession> findByUserIdOrderByCreatedAtDesc(@Param("userId") Long userId);
-
-
-//TODO - delete after testing
-//    @Query("SELECT COUNT(*) FROM exam_sessions WHERE user_id = :userId")
-//    long countByUserId(@Param("userId") Long userId);
-//
-//    @Query("SELECT COUNT(*) FROM exam_sessions WHERE user_id = :userId AND passed = true")
-//    long countPassedByUserId(@Param("userId") Long userId);
 
     @Modifying
     @Query("UPDATE exam_sessions SET status = 'COMPLETED', completed_at = CURRENT_TIMESTAMP, passed = :passed WHERE id = :sessionId")

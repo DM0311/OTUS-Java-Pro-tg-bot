@@ -34,18 +34,7 @@ public class QuestionService {
         return loadAnswersForQuestions(questions);
     }
 
-    //TODO - for /training functions
-//    public List<Question> getRandomQuestionsByTopic(String topic, int count) {
-//        List<Question> questions = questionRepository.findRandomByTopic(topic, count);
-//        return loadAnswersForQuestions(questions);
-//    }
-
-    //TODO - for /training functions
-//    @Transactional
-//    public void incrementShown(Long questionId) {
-//        answerRepository.incrementTimesShown(questionId);
-//    }
-
+    // для статистики по вопросам
     @Transactional
     public void markAnswer(Long questionId, boolean isCorrect) {
         if (isCorrect) {

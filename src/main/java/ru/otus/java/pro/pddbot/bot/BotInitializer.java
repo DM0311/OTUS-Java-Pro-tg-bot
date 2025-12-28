@@ -28,7 +28,7 @@ public class BotInitializer {
 
         try {
             BotSession botSession = telegramBotsApi.registerBot(telegramBot);
-            log.info("Session is running: {}",botSession.isRunning());
+            log.info("Bot session is running: {}",botSession.isRunning());
         } catch (TelegramApiException e) {
             log.error("Error while registering bot", e);
         }

@@ -6,17 +6,11 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import ru.otus.java.pro.pddbot.model.User;
 
-import java.util.List;
 import java.util.Optional;
 
 public interface UserRepository extends CrudRepository<User, Long> {
 
     Optional<User> findByTelegramId(Long telegramId);
-
-    Optional<User> findById(Long id);
-
-    @Query("SELECT COUNT(*) FROM users WHERE is_active = true")
-    long countActiveUsers();
 
     @Modifying
     @Query("UPDATE users SET state = :state WHERE telegram_id = :telegramId")

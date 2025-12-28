@@ -15,10 +15,6 @@ public interface AnswerRepository extends CrudRepository<Answer, Long> {
     List<Answer> findByQuestionIds(@Param("questionIds") List<Long> questionIds);
 
     @Modifying
-    @Query("UPDATE questions SET times_shown = times_shown + 1 WHERE id = :questionId")
-    void incrementTimesShown(@Param("questionId") Long questionId);
-
-    @Modifying
     @Query("UPDATE questions SET times_correct = times_correct + 1 WHERE id = :questionId")
     void incrementTimesCorrect(@Param("questionId") Long questionId);
 
